@@ -64,7 +64,7 @@ const Home = () => {
             Could you try adjusting the cooking.
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-16 py-10 w-11/12 m-auto">
+        <div className="grid grid-cols-3 gap-8 py-10 w-11/12 justify-center mx-auto">
           {chefs.map((chef) => (
             <ChefCard key={chef.id} chef={chef}></ChefCard>
           ))}

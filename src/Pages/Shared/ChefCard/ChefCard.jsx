@@ -18,7 +18,7 @@ const ChefCard = ({ chef }) => {
           </h2>
           <p>Numbers of Recipes : {recipe}</p>
           <p>Followers : {likes}</p>
-          <div className="card-actions justify-center py-5">
+          <div className="card-actions justify-center py-3">
             <Link to={`recipe/${id}`}>
               <button className="btn btn-wide bg-rose-500">View Recipes</button>
             </Link>

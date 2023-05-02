@@ -30,10 +30,10 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          <NavLink>
+          <Link to="/login">
             <p>{user?.displayName}</p>
             <button>Login</button>
-          </NavLink>
+          </Link>
         </div>
       </div>
     </div>
