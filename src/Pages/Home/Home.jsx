@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import banner from "../../assets/baanner.jpg";
 
 const Home = () => {
+  const [chefs, setChefs] = useState([]);
+  useEffect(() => {}, []);
   return (
     <div>
       <div className="carousel w-full">
