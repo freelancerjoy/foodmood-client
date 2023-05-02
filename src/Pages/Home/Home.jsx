@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import banner from "../../assets/baanner.jpg";
 import ChefCard from "../Shared/ChefCard/ChefCard";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Home = () => {
-  const [chefs, setChefs] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/chefs")
-      .then((res) => res.json())
-      .then((data) => setChefs(data));
-  }, []);
+  const { chefs } = useContext(AuthContext);
+
   console.log(chefs);
   return (
     <div>

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className=" bg-rose-50">
       <div className=" w-11/12 m-auto">
@@ -28,7 +31,7 @@ const Header = () => {
             </li>
           </ul>
           <NavLink>
-            <p>User Profile</p>
+            <p>{user?.displayName}</p>
             <button>Login</button>
           </NavLink>
         </div>
