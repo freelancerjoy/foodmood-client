@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import banner from "../../assets/baanner.jpg";
+import ChefCard from "../Shared/ChefCard/ChefCard";
 
 const Home = () => {
   const [chefs, setChefs] = useState([]);
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetch("http://localhost:5000/chefs")
+      .then((res) => res.json())
+      .then((data) => setChefs(data));
+  }, []);
+  console.log(chefs);
   return (
     <div>
       <div className="carousel w-full">
@@ -49,6 +55,22 @@ const Home = () => {
               ❯
             </a>
           </div>
+        </div>
+      </div>
+      <div>
+        <div className="pt-10">
+          <h2 className="text-4xl font-bold text-center text-rose-700">
+            Our Chefs
+          </h2>
+          <p className="text-center text-slate-400">
+            The flavor of the dish was excellent, but the texture was a bit off.
+            Could you try adjusting the cooking.
+          </p>
+        </div>
+        <div className="grid grid-cols-3 gap-16 py-10 w-11/12 m-auto">
+          {chefs.map((chef) => (
+            <ChefCard key={chef.id} chef={chef}></ChefCard>
+          ))}
         </div>
       </div>
     </div>
