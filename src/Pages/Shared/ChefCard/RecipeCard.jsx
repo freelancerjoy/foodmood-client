@@ -2,11 +2,14 @@ import { Rating } from "@smastrom/react-rating";
 import React from "react";
 import { FcCheckmark } from "react-icons/fc";
 import "@smastrom/react-rating/style.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const RecipeCard = ({ recipe }) => {
   const { id, recepe_name, coocking_method, rating, ingredients, recipe_img } =
     recipe;
+  const notify = () => toast.success("Faviourite your recipe");
   const handleClick = (event) => {
+    notify();
     event.currentTarget.disabled = true;
   };
   return (
@@ -35,6 +38,7 @@ const RecipeCard = ({ recipe }) => {
               className="btn btn-primary bg-rose-500">
               Favourite
             </button>
+            <Toaster />
           </div>
         </div>
         <figure>
