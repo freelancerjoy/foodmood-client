@@ -26,7 +26,7 @@ const Recipe = () => {
               {chef?.name}
             </h1>
             <p>Followers : {chef?.likes}</p>
-            <p>Number of Recipe : {chef?.recipe}</p>
+            <p>Number of Recipe : {recipes.length}</p>
             <p>Experience of : {chef?.exparince}</p>
           </div>
         </div>
