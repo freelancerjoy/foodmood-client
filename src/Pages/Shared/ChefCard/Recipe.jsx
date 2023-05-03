@@ -1,14 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import RecipeCard from "./RecipeCard";
+import { FidgetSpinner } from "react-loader-spinner";
 
 const Recipe = () => {
   const { chefs } = useContext(AuthContext);
+  const [loader, setLoder] = useState(true);
+
+  useEffect(() => {
+    if (chefs.length == 0) {
+      setLoder(false);
+    } else {
+      setLoder(true);
+    }
+  });
 
   const recipes = useLoaderData();
+
   const chef = chefs.find((chef) => chef?.id === recipes[0]?.recipe_id);
-  //   const { id, name, exparince, recipe, likes, img } = chef;
+
   console.log(recipes);
   console.log(chef);
   return (
@@ -31,11 +42,26 @@ const Recipe = () => {
           </div>
         </div>
       </div>
-      <div className="w-10/12 m-auto">
-        {recipes?.map((recipe) => (
-          <RecipeCard recipe={recipe}></RecipeCard>
-        ))}
-      </div>
+      {loader ? (
+        <div className="w-10/12 grid grid-cols-2 m-auto">
+          {recipes?.map((recipe) => (
+            <RecipeCard recipe={recipe}></RecipeCard>
+          ))}
+        </div>
+      ) : (
+        <div className="flex justify-center py-12">
+          <FidgetSpinner
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+            ballColors={["#ff0000", "#00ff00", "#0000ff"]}
+            backgroundColor="#F4442E"
+          />
+        </div>
+      )}
     </div>
   );
 };

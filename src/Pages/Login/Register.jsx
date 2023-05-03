@@ -8,11 +8,13 @@ const Register = () => {
   const handleRegister = (event) => {
     event.preventDefault();
     setError("");
+
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const photoUrl = form.photo.value;
+    form.reset();
     console.log(name, email, password.length, photoUrl);
     if (password.length < 6) {
       setError("Your password must be at least 6 characters");
@@ -26,7 +28,7 @@ const Register = () => {
       })
       .catch((error) => {
         const errorr = error.message;
-        console.log(errorr);
+        setError("You Have alrady aexist");
       });
   };
   return (

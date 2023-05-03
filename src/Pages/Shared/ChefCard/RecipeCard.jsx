@@ -13,9 +13,12 @@ const RecipeCard = ({ recipe }) => {
     event.currentTarget.disabled = true;
   };
   return (
-    <div className="w-11/12 mx-auto py-5">
-      <div className="card lg:card-side grid grid-cols-2 bg-base-100 shadow-xl">
+    <div className="w-11/12 mx-auto my-5 border-t-8">
+      <div className="card lg:card-side bg-base-100 shadow-xl">
         <div className="card-body">
+          <figure className="h-64 p-3">
+            <img className="img-full rounded-md" src={recipe_img} alt="Album" />
+          </figure>
           <h2 className="card-title text-3xl">{recepe_name}</h2>
           <ul>
             <p className="mb-2 font-bold">Ingredients</p>
@@ -41,9 +44,6 @@ const RecipeCard = ({ recipe }) => {
             <Toaster />
           </div>
         </div>
-        <figure>
-          <img className="img-full" src={recipe_img} alt="Album" />
-        </figure>
       </div>
     </div>
   );

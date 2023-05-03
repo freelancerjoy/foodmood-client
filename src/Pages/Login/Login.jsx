@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import loginImage from "../../assets/login.png";
 import { FaFacebook, FaGithub, FaGoogle, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -6,22 +6,25 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const { signIn, signWithGoogle, signWithgithub } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
   const handleSignin = (event) => {
     event.preventDefault();
+    setError("");
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    form.reset();
 
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
       })
       .catch((error) => {
         const crrorr = error.message;
         console.log(crrorr);
+        setError("Your email address or passwors doesn't match");
       });
   };
 
@@ -88,6 +91,7 @@ const Login = () => {
                     </a>
                   </Link>
                 </label>
+                <p className="text-red-500">{error}</p>
               </div>
               <div className="form-control mt-6">
                 <button className="btn rounded-full bg-rose-500">Login</button>

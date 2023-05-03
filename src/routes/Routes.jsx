@@ -6,11 +6,13 @@ import Home from "../Pages/Home/Home";
 import Recipe from "../Pages/Shared/ChefCard/Recipe";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
+import ErrorPage from "../Pages/errorpage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -20,7 +22,9 @@ const router = createBrowserRouter([
         path: "recipe/:id",
         element: <Recipe></Recipe>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/recipe/${params.id}`),
+          fetch(
+            `https://food-mood-server-freelancerjoy.vercel.app/recipe/${params.id}`
+          ),
       },
       {
         path: "/login",

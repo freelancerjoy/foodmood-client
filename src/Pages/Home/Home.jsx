@@ -2,9 +2,22 @@ import React, { useContext, useEffect, useState } from "react";
 import banner from "../../assets/baanner.jpg";
 import ChefCard from "../Shared/ChefCard/ChefCard";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { FidgetSpinner } from "react-loader-spinner";
 
 const Home = () => {
   const { chefs } = useContext(AuthContext);
+  const [loader, setLoder] = useState(true);
+
+  useEffect(() => {
+    if (chefs.length == 0) {
+      setLoder(false);
+    } else {
+      setLoder(true);
+    }
+  }),
+    [chefs];
+
+  console.log(chefs);
 
   console.log(chefs);
   return (
@@ -64,10 +77,27 @@ const Home = () => {
             Could you try adjusting the cooking.
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-8 py-10 w-11/12 justify-center mx-auto">
-          {chefs.map((chef) => (
-            <ChefCard key={chef.id} chef={chef}></ChefCard>
-          ))}
+        <div>
+          {loader ? (
+            <div className="grid grid-cols-3 gap-8 py-10 w-11/12 justify-center mx-auto">
+              {chefs.map((chef) => (
+                <ChefCard key={chef.id} chef={chef}></ChefCard>
+              ))}
+            </div>
+          ) : (
+            <div className="flex justify-center py-12">
+              <FidgetSpinner
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper"
+                ballColors={["#ff0000", "#00ff00", "#0000ff"]}
+                backgroundColor="#F4442E"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -12,7 +12,9 @@ const Header = () => {
     <div className=" bg-rose-50">
       <div className=" w-11/12 m-auto">
         <div className="lg:flex text-center  lg:justify-between items-center py-5 md:flex-row">
-          <h3 className="text-2xl font-bold">FoodMood</h3>
+          <h3 className="text-2xl font-bold border border-4 rounded-md border-rose-600 p-2">
+            FoodMood
+          </h3>
           <ul className="lg:flex m-auto md:flex-row md:space-y-2 lg:space-y-0 lg:space-x-8 text-gray-600 my-2">
             <li>
               <NavLink
