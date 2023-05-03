@@ -3,7 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handlelogOut = () => {
+    logOut();
+  };
   console.log(user);
   return (
     <div className=" bg-rose-50">
@@ -31,8 +34,24 @@ const Header = () => {
             </li>
           </ul>
           <Link to="/login">
-            <p>{user?.displayName}</p>
-            <button>Login</button>
+            <p>
+              {user ? (
+                <div className="flex items-center gap-6">
+                  <span title={user?.displayName} className="inline-block">
+                    <img
+                      className="rounded-full w-12 h-12"
+                      src={user?.photoURL}
+                      alt="user image"
+                    />
+                  </span>
+                  <button onClick={handlelogOut} className="btn bg-rose-500">
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <button className="btn bg-rose-500">Login</button>
+              )}
+            </p>
           </Link>
         </div>
       </div>
