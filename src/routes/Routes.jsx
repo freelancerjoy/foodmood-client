@@ -8,6 +8,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
 import ErrorPage from "../Pages/errorpage/ErrorPage";
 import PrivetRouet from "./PrivetRouet";
+import Blog from "../Pages/Bolg/Blog";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
     ],
   },
