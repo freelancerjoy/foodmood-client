@@ -32,9 +32,32 @@ const Footer = () => {
           <span className="text-2xl font-semibold mb-3 text-white">
             Recent Recipes
           </span>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <div className="flex items-start gap-2">
+            <img
+              className="w-16 h-16"
+              src="https://assets.bonappetit.com/photos/61b775620fb3fcc4cbf036c1/1:1/w_1920,c_limit/20211208%20Spaghetti%20Squash%20with%20Tomato%20Sauce%20and%20Mozarella%20LEDE.jpg"
+              alt=""
+            />
+            <div>
+              <p className="font-bold font-2xl"> BA's Best Ziti</p>
+              <a className="link link-hover">
+                These potato starch noodles <br /> from my book Tenderheart
+              </a>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <img
+              className="w-16 h-16"
+              src="https://assets.bonappetit.com/photos/631b47270d376dca32f93400/1:1/w_1920,c_limit/0909-seo-baked-ziti-lede.jpg"
+              alt=""
+            />
+            <div>
+              <p className="font-bold font-2xl"> Baked Ziti</p>
+              <a className="link link-hover">
+                In a surprise to absolutely <br /> no one, spaghetti squash
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
       <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300"></footer>

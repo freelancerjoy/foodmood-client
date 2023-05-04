@@ -25,9 +25,9 @@ const Recipe = () => {
       <div className="bg-rose-50">
         {" "}
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:text-left text-center lg:pb-0 mb-8 pb-5 w-10/12 mx-auto ">
-          <div>
+          <div className="">
             <img
-              className="w-5/6 m-auto  rounded-full"
+              className="w-5/6 shadow-xl m-auto  rounded-full"
               src={chef?.img}
               alt=""
             />

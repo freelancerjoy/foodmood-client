@@ -9,6 +9,7 @@ import Register from "../Pages/Login/Register";
 import ErrorPage from "../Pages/errorpage/ErrorPage";
 import PrivetRouet from "./PrivetRouet";
 import Blog from "../Pages/Bolg/Blog";
+import Spinner from "../Pages/Shared/Spinner/Spinner";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,9 @@ const router = createBrowserRouter([
         path: "recipe/:id",
         element: (
           <PrivetRouet>
-            <Recipe></Recipe>
+            <Spinner>
+              <Recipe></Recipe>
+            </Spinner>
           </PrivetRouet>
         ),
         loader: ({ params }) =>

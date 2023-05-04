@@ -12,10 +12,12 @@ const options = {
 const Blog = () => {
   return (
     <div>
-      <div className="pdf">
+      <div className="pdf text-center my-10">
         <ReactToPdf targetRef={ref} filename="Questions And Answer.pdf">
           {({ toPdf }) => (
-            <button className="btn" onClick={toPdf}>
+            <button
+              className="btn btn-outline outline-dotted rounded-full "
+              onClick={toPdf}>
               Download Pdf
             </button>
           )}
@@ -27,7 +29,7 @@ const Blog = () => {
         x={0.5}
         y={0.5}
         scale={0.8}
-        className="w-10/12 mx-auto my-14">
+        className="w-10/12 mx-auto mb-14">
         <div className="border p-5">
           <h1 className="text-2xl font-bold mb-2">
             Differences between uncontrolled and controlled components.

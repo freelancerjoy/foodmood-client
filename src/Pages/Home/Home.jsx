@@ -9,9 +9,10 @@ const Home = () => {
       <h2 className="text-4xl font-bold text-center text-rose-700 mt-12">
         Freequently Asked Questions
       </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 w-11/12 mx-auto py-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 w-11/12 mx-auto py-12">
         <div>
           <img
+            className="rounded"
             src="https://st2.depositphotos.com/2704315/7555/v/950/depositphotos_75558725-stock-illustration-business-man-with-question-mark.jpg"
             alt=""
           />
