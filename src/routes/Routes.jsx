@@ -7,6 +7,7 @@ import Recipe from "../Pages/Shared/ChefCard/Recipe";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
 import ErrorPage from "../Pages/errorpage/ErrorPage";
+import PrivetRouet from "./PrivetRouet";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ const router = createBrowserRouter([
       },
       {
         path: "recipe/:id",
-        element: <Recipe></Recipe>,
+        element: (
+          <PrivetRouet>
+            <Recipe></Recipe>
+          </PrivetRouet>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://food-mood-server-freelancerjoy.vercel.app/recipe/${params.id}`

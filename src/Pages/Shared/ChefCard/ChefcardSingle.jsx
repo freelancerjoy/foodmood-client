@@ -1,4 +1,5 @@
 import React from "react";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
 const ChefCardSingle = ({ chef }) => {
@@ -7,7 +8,15 @@ const ChefCardSingle = ({ chef }) => {
     <div>
       <div className="card lg:w-96 bg-base-100 shadow-xl">
         <figure>
-          <img src={img} alt="chef" />
+          <LazyLoad
+            height={300}
+            width={400}
+            threshold={1}
+            onContentVisible={() => {
+              console.log("loaded!");
+            }}>
+            <img src={img} alt="chef" />
+          </LazyLoad>
         </figure>
         <div className="card-body px-6 py-2">
           <h2 className="card-title justify-between">
@@ -22,7 +31,9 @@ const ChefCardSingle = ({ chef }) => {
           </p>
           <div className="card-actions justify-center py-3">
             <Link to={`recipe/${id}`}>
-              <button className="btn btn-wide bg-rose-500">View Recipes</button>
+              <button className="btn btn-wide rounded-full bg-rose-500">
+                View Recipes
+              </button>
             </Link>
           </div>
         </div>

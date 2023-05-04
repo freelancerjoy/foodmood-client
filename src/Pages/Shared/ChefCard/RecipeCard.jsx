@@ -13,7 +13,7 @@ const RecipeCard = ({ recipe }) => {
     event.currentTarget.disabled = true;
   };
   return (
-    <div className="w-11/12 mx-auto my-5 border-t-8">
+    <div className="w-11/12 mx-auto mt-5 mb-10  border-t-8">
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <div className="card-body">
           <figure className="h-64 p-3">
@@ -41,7 +41,9 @@ const RecipeCard = ({ recipe }) => {
           </div>
 
           <div className="card-actions justify-end">
-            <button onClick={handleClick} className="btn  bg-rose-500">
+            <button
+              onClick={handleClick}
+              className="btn rounded-full px-10 bg-rose-500">
               Favourite
             </button>
             <Toaster />

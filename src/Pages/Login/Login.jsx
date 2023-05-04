@@ -1,12 +1,16 @@
 import React, { useContext, useState } from "react";
 import loginImage from "../../assets/login.png";
 import { FaFacebook, FaGithub, FaGoogle, FaInstagram } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const { signIn, signWithGoogle, signWithgithub } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  console.log(from);
 
   const handleSignin = (event) => {
     event.preventDefault();
@@ -20,6 +24,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const crrorr = error.message;
@@ -33,21 +38,20 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((erorr) => {
         const error = erorr.message;
-        console.log(error);
       });
   };
   const handleGithub = (event) => {
     signWithgithub()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((erorr) => {
         const error = erorr.message;
-        console.log(error);
       });
   };
 

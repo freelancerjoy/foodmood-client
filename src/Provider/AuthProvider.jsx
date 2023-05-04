@@ -22,6 +22,7 @@ const gitProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
   const [chefs, setChefs] = useState([]);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://food-mood-server-freelancerjoy.vercel.app/chefs")
@@ -30,21 +31,26 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const signWithGoogle = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
   const signWithgithub = () => {
+    setLoading(true);
     return signInWithPopup(auth, gitProvider);
   };
 
   const logOut = () => {
+    setLoading(true);
     signOut(auth);
   };
 
@@ -59,12 +65,17 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
       setUser(currentUser);
+      setLoading(false);
     });
+    // return () => {
+    //   unsubscribe();
+    // };
   }, []);
 
   const authInfo = {
     user,
     chefs,
+    loading,
     createUser,
     signIn,
     signWithGoogle,

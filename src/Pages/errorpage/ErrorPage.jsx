@@ -13,7 +13,7 @@ const ErrorPage = () => {
       <div className="text-center max-w-md mx-auto py-12">
         <img className="w-full" src={errorImg} alt="" />
         <h1 className="text-2xl font-bold text-rose-600">
-          {/* {error.error.message} */}
+          {error?.error?.message}
         </h1>
       </div>
       <Footer></Footer>

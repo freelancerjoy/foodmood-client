@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import ActiveLink from "../ActiveLink/ActiveLink";
+import ActiveLink from "../ActiveRoute/ActiveLink";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -30,12 +30,16 @@ const Header = () => {
                       alt="user image"
                     />
                   </span>
-                  <button onClick={handlelogOut} className="btn bg-rose-500">
+                  <button
+                    onClick={handlelogOut}
+                    className="btn rounded-full md:px-8 bg-rose-500">
                     Logout
                   </button>
                 </div>
               ) : (
-                <button className="btn bg-rose-500">Login</button>
+                <button className="btn bg-rose-500 rounded-full md:px-8">
+                  Login
+                </button>
               )}
             </div>
           </Link>
