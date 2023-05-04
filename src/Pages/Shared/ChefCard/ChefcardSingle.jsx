@@ -22,7 +22,7 @@ const ChefCardSingle = ({ chef }) => {
         <div className="card-body px-6 py-2">
           <h2 className="card-title justify-between">
             {name}
-            <div className="badge">Experince of : {exparince}</div>
+            <div className="badge">Experince of {exparince}</div>
           </h2>
           <p>
             Numbers of Recipes : <span className="text-rose-500">{recipe}</span>
