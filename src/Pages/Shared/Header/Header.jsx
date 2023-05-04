@@ -31,11 +31,13 @@ const Header = () => {
                       alt="user image"
                     />
                   </span>
-                  <button
-                    onClick={handlelogOut}
-                    className="btn rounded-full md:px-8 bg-rose-500">
-                    Logout
-                  </button>
+                  <Link too="/">
+                    <button
+                      onClick={handlelogOut}
+                      className="btn rounded-full md:px-8 bg-rose-500">
+                      Logout
+                    </button>
+                  </Link>
                 </div>
               ) : (
                 <button className="btn bg-rose-500 rounded-full md:px-8">

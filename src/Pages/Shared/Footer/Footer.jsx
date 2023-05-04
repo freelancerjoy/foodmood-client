@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300"></footer>
+      <footer className="footer px-10 border-t bg-base-200 text-base-content border-base-300"></footer>
     </div>
   );
 };

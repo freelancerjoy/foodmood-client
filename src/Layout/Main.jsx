@@ -14,8 +14,8 @@ const Main = () => {
       <Header></Header>
       <ScrollToTop></ScrollToTop>
       <div>
-        <Outlet />
         {navigation.state === "loading" && <Spinner></Spinner>}
+        <Outlet />
       </div>
 
       <Footer></Footer>
