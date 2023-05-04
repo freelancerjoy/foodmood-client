@@ -2,6 +2,7 @@ import React from "react";
 import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
+// chef card design and using leazy load chef picture
 const ChefCardSingle = ({ chef }) => {
   const { id, name, exparince, recipe, likes, img } = chef;
   return (

@@ -6,7 +6,6 @@ import { FidgetSpinner } from "react-loader-spinner";
 const PrivetRouet = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
-  console.log(location);
 
   if (loading) {
     return (

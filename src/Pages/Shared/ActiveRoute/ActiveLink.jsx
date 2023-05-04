@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+// Active route indicator
 const ActiveLink = ({ to, children }) => {
-  console.log(to, children);
   return (
     <div>
       <NavLink

@@ -5,25 +5,28 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+  // recived and distructure fuction from Authcontext
   const { signIn, signWithGoogle, signWithgithub } = useContext(AuthContext);
+  // error state for Login field form
   const [error, setError] = useState("");
+  // route location
   const location = useLocation();
   const navigate = useNavigate();
+  // previous router path bfore redirecrt
   const from = location.state?.from?.pathname || "/";
-  console.log(from);
 
+  // user sign in Handler
   const handleSignin = (event) => {
     event.preventDefault();
     setError("");
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
     form.reset();
 
+    // Firebase function call ( signInWithEmailAndPassword ) arguments : email, password
     signIn(email, password)
       .then((result) => {
-        const user = result.user;
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -34,6 +37,7 @@ const Login = () => {
   };
 
   const handleGoogle = (event) => {
+    // Firebase function call ( signInWithPopup )
     signWithGoogle()
       .then((result) => {
         const user = result.user;
@@ -45,6 +49,7 @@ const Login = () => {
       });
   };
   const handleGithub = (event) => {
+    // Firebase function call ( signInWithPopup )
     signWithgithub()
       .then((result) => {
         const user = result.user;

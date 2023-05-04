@@ -1,6 +1,8 @@
 import React from "react";
 import banner from "../../../assets/baanner.jpg";
 
+// Slider section Home page Displayed
+
 const Slider = () => {
   return (
     <div className="carousel w-full">

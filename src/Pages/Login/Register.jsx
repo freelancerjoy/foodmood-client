@@ -3,27 +3,34 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
+  // recived and distructure fuction from Authcontext
   const { createUser, profileUpdate } = useContext(AuthContext);
+  // error state for register field form
   const [error, setError] = useState("");
+
+  // user Register handler
   const handleRegister = (event) => {
     event.preventDefault();
     setError("");
-
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const photoUrl = form.photo.value;
     form.reset();
-    console.log(name, email, password.length, photoUrl);
+
+    // when password length is lessthan 6 charecter then display this error
     if (password.length < 6) {
       setError("Your password must be at least 6 characters");
       return;
     }
+
+    // Firebase function call ( createUserWithEmailAndPassword ) arguments : email, password
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
+        // Update Profile : firebase fuction call ( updateProfile ) arguments : current user, name and photoURL
         profileUpdate(user, name, photoUrl);
       })
       .catch((error) => {

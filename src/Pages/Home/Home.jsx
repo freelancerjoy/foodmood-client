@@ -1,8 +1,3 @@
-import React, { useContext, useEffect, useState } from "react";
-
-import backgroundImg from "../../assets/background.jpg";
-
-import { AuthContext } from "../../Provider/AuthProvider";
 import Slider from "./slider/Slider";
 import ChefCard from "../Shared/ChefCard/ChefCard";
 

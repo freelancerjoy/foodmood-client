@@ -6,6 +6,7 @@ import { FidgetSpinner } from "react-loader-spinner";
 
 const Recipe = () => {
   const { chefs } = useContext(AuthContext);
+  // // Spinner using data fetch loadtime
   const [loader, setLoder] = useState(true);
 
   useEffect(() => {
@@ -19,9 +20,6 @@ const Recipe = () => {
   const recipes = useLoaderData();
 
   const chef = chefs.find((chef) => chef?.id === recipes[0]?.recipe_id);
-
-  console.log(recipes);
-  console.log(chef);
   return (
     <div>
       <div className="bg-rose-50">
@@ -61,7 +59,7 @@ const Recipe = () => {
       {loader ? (
         <div className="lg:w-10/12 w-full grid grid-cols-1 lg:grid-cols-2 m-auto">
           {recipes?.map((recipe) => (
-            <RecipeCard recipe={recipe}></RecipeCard>
+            <RecipeCard key={recipe.id} recipe={recipe}></RecipeCard>
           ))}
         </div>
       ) : (

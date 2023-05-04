@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import { FidgetSpinner } from "react-loader-spinner";
 import ChefCardSingle from "./ChefcardSingle";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const ChefCard = () => {
+  // Get data from Authcontext : fetch all chefs
   const { chefs } = useContext(AuthContext);
+  // Spinner using data fetch loadtime
   const [loader, setLoder] = useState(true);
-
+  // when chefs array is empty Starting spinner
   useEffect(() => {
     if (chefs.length == 0) {
       setLoder(false);

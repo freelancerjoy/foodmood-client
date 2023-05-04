@@ -7,9 +7,13 @@ import toast, { Toaster } from "react-hot-toast";
 const RecipeCard = ({ recipe }) => {
   const { id, recepe_name, coocking_method, rating, ingredients, recipe_img } =
     recipe;
+
+  // toast alert
   const notify = () => toast.success("Faviourite your recipe");
+  // toast fire handler
   const handleClick = (event) => {
     notify();
+    // button disabled
     event.currentTarget.disabled = true;
   };
   return (
@@ -22,8 +26,8 @@ const RecipeCard = ({ recipe }) => {
           <h2 className="card-title text-3xl">{recepe_name}</h2>
           <ul>
             <p className="mb-2 font-bold">Ingredients</p>
-            {ingredients.map((ingredient) => (
-              <li className="flex items-center gap-2">
+            {ingredients.map((ingredient, index) => (
+              <li key={index} className="flex items-center gap-2">
                 <span className="text-rose-500">
                   <BsCheckLg></BsCheckLg>
                 </span>
