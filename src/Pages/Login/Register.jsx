@@ -33,7 +33,7 @@ const Register = () => {
   };
   return (
     <div>
-      <div className=" px-20">
+      <div className=" lg:px-20 px-0">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card  w-full max-w-lg  bg-base-100">
             <form onSubmit={handleRegister} className="card-body">

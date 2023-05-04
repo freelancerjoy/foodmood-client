@@ -1,44 +1,28 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import ActiveLink from "../ActiveLink/ActiveLink";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const handlelogOut = () => {
     logOut();
   };
-  console.log(user);
   return (
     <div className=" bg-rose-50">
       <div className=" w-11/12 m-auto">
         <div className="lg:flex text-center  lg:justify-between items-center py-5 md:flex-row">
-          <h3 className="text-2xl font-bold border border-4 rounded-md border-rose-600 p-2">
+          <h3 className="text-2xl font-bold border border-spacing-3 rounded-md border-rose-600 p-2 max-w-sm">
             FoodMood
           </h3>
-          <ul className="lg:flex m-auto md:flex-row md:space-y-2 lg:space-y-0 lg:space-x-8 text-gray-600 my-2">
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "font-bold text-rose-600" : "hover:text-rose-500"
-                }
-                to="/">
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "font-bold text-rose-600 " : "hover:text-rose-500"
-                }
-                to="/blog">
-                Blog
-              </NavLink>
-            </li>
-          </ul>
+          <nav className="lg:flex m-auto md:flex-row pt-2 md:mt-0 md:space-y-2 space-y-3 lg:space-y-0 lg:space-x-8 text-gray-600 my-2">
+            <ActiveLink to="/">Home</ActiveLink>
+            <ActiveLink to="/blog">Blog</ActiveLink>
+          </nav>
           <Link to="/login">
-            <p>
+            <div className="flex justify-center md:my-0 my-8">
               {user ? (
-                <div className="flex items-center gap-6">
+                <div className="flex lg:flex-row flex-col items-center gap-6">
                   <span title={user?.displayName} className="inline-block">
                     <img
                       className="rounded-full w-12 h-12"
@@ -53,7 +37,7 @@ const Header = () => {
               ) : (
                 <button className="btn bg-rose-500">Login</button>
               )}
-            </p>
+            </div>
           </Link>
         </div>
       </div>

@@ -26,24 +26,40 @@ const Recipe = () => {
     <div>
       <div className="bg-rose-50">
         {" "}
-        <div className="flex items-center  w-10/12 mx-auto ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:text-left text-center lg:pb-0 mb-8 pb-5 w-10/12 mx-auto ">
           <div>
-            <img className="w-5/6 rounded-full" src={chef?.img} alt="" />
+            <img
+              className="w-5/6 m-auto  rounded-full"
+              src={chef?.img}
+              alt=""
+            />
           </div>
-          <div>
+          <div className="py-5 ">
             <h1
-              className="text-4xl font-bold py-5
+              className="text-4xl font-bold pb-3
           ">
               {chef?.name}
             </h1>
-            <p>Followers : {chef?.likes}</p>
-            <p>Number of Recipe : {recipes.length}</p>
-            <p>Experience of : {chef?.exparince}</p>
+            <p>
+              <span className="font-bold">Likes :</span> {chef?.likes}
+            </p>
+            <p className="my-2">
+              {" "}
+              <span className="font-bold">Number of Recipe :</span>{" "}
+              {recipes.length}
+            </p>
+            <p className="my-2">
+              <span className="font-bold">Experience of : </span>
+              {chef?.exparince}
+            </p>
+            <p>
+              <span className="font-bold">Bio : </span> {chef?.bio}
+            </p>
           </div>
         </div>
       </div>
       {loader ? (
-        <div className="w-10/12 grid grid-cols-2 m-auto">
+        <div className="lg:w-10/12 w-full grid grid-cols-1 lg:grid-cols-2 m-auto">
           {recipes?.map((recipe) => (
             <RecipeCard recipe={recipe}></RecipeCard>
           ))}

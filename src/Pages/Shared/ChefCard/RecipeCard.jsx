@@ -1,6 +1,6 @@
 import { Rating } from "@smastrom/react-rating";
 import React from "react";
-import { FcCheckmark } from "react-icons/fc";
+import { BsCheckLg } from "react-icons/bs";
 import "@smastrom/react-rating/style.css";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -24,7 +24,9 @@ const RecipeCard = ({ recipe }) => {
             <p className="mb-2 font-bold">Ingredients</p>
             {ingredients.map((ingredient) => (
               <li className="flex items-center gap-2">
-                <FcCheckmark></FcCheckmark>
+                <span className="text-rose-500">
+                  <BsCheckLg></BsCheckLg>
+                </span>
                 {ingredient}
               </li>
             ))}
@@ -33,12 +35,13 @@ const RecipeCard = ({ recipe }) => {
             <span className="font-bold">Cooking Method : </span>
             {coocking_method}
           </p>
-          <Rating style={{ maxWidth: 180 }} value={rating} readOnly />
+          <div className="flex items-center gap-2">
+            <Rating style={{ maxWidth: 180 }} value={rating} readOnly />
+            <span>{rating}</span>
+          </div>
 
           <div className="card-actions justify-end">
-            <button
-              onClick={handleClick}
-              className="btn btn-primary bg-rose-500">
+            <button onClick={handleClick} className="btn  bg-rose-500">
               Favourite
             </button>
             <Toaster />

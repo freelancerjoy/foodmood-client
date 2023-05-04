@@ -1,29 +1,53 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 
-const ChefCard = ({ chef }) => {
-  const { id, name, exparince, recipe, likes, img } = chef;
+import { FidgetSpinner } from "react-loader-spinner";
+import ChefCardSingle from "./ChefcardSingle";
+import { AuthContext } from "../../../Provider/AuthProvider";
+
+const ChefCard = () => {
+  const { chefs } = useContext(AuthContext);
+  const [loader, setLoder] = useState(true);
+
+  useEffect(() => {
+    if (chefs.length == 0) {
+      setLoder(false);
+    } else {
+      setLoder(true);
+    }
+  }),
+    [chefs];
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <figure>
-          <img src={img} alt="chef" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">
-            {name}
-            <div className="badge bg-rose-600 badge-secondary">
-              Experince of : {exparince}
-            </div>
-          </h2>
-          <p>Numbers of Recipes : {recipe}</p>
-          <p>Followers : {likes}</p>
-          <div className="card-actions justify-center py-3">
-            <Link to={`recipe/${id}`}>
-              <button className="btn btn-wide bg-rose-500">View Recipes</button>
-            </Link>
+      <div className="pt-10">
+        <h2 className="text-4xl font-bold text-center text-rose-700">
+          Our Chefs
+        </h2>
+        <p className="text-center mt-2 text-slate-400">
+          The flavor of the dish was excellent, but the texture was a bit off.
+          Could you try adjusting the cooking.
+        </p>
+      </div>
+      <div>
+        {loader ? (
+          <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-8 py-10 w-11/12 justify-center mx-auto">
+            {chefs.map((chef) => (
+              <ChefCardSingle key={chef.id} chef={chef}></ChefCardSingle>
+            ))}
           </div>
-        </div>
+        ) : (
+          <div className="flex justify-center py-12">
+            <FidgetSpinner
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="dna-loading"
+              wrapperStyle={{}}
+              wrapperClass="dna-wrapper"
+              ballColors={["#ff0000", "#00ff00", "#0000ff"]}
+              backgroundColor="#F4442E"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
